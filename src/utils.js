@@ -7,6 +7,7 @@ function buildSlackAttachments({ status, color, github }) {
   const branch = event === 'pull_request' ? payload.pull_request.head.ref : ref.replace('refs/heads/', '');
 
   const sha = event === 'pull_request' ? payload.pull_request.head.sha : github.context.sha;
+  const sha_short = sha.substr(0,8);
 
   const referenceLink =
     event === 'pull_request'
@@ -17,7 +18,7 @@ function buildSlackAttachments({ status, color, github }) {
         }
       : {
           title: 'Branch',
-          value: `<https://github.com/${owner}/${repo}/commit/${sha} | ${branch}>`,
+          value: `<https://github.com/${owner}/${repo}/commit/${sha} | ${branch} ${sha_short}>`,
           short: true,
         };
 
