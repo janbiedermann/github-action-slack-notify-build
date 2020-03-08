@@ -18,7 +18,7 @@ function buildSlackAttachments({ status, color, github }) {
         }
       : {
           title: 'Branch',
-          value: `<https://github.com/${owner}/${repo}/commit/${sha} | ${branch}@${sha_short}>`,
+          value: `<https://github.com/${owner}/${repo}/commit/${sha} | ${branch}>`,
           short: true,
         };
 
@@ -37,6 +37,11 @@ function buildSlackAttachments({ status, color, github }) {
           short: true,
         },
         referenceLink,
+        {
+          title: 'Commit',
+          value: `<https://github.com/${owner}/${repo}/commit/${sha} | ${sha_short}>`,
+          short: true,
+        },
         {
           title: 'Event',
           value: event,
